@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <script defer src="cart.js"></script>
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+    <ul id="items">
+        <li>Item 1 - $10 <button onclick="addToCart('Item 1', 10)">Add to Cart</button></li>
+        <li>Item 2 - $15 <button onclick="addToCart('Item 2', 15)">Add to Cart</button></li>
+        <li>Item 3 - $20 <button onclick="addToCart('Item 3', 20)">Add to Cart</button></li>
+    </ul>
+
+    <button id="showCartButton">Show Cart</button>
+
+    <!-- The Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Cart</h2>
+            <ul id="cart"></ul>
+            <p id="total">Total: $0.00</p>
+            <button onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+    function addToCart(name, price) {
+        if (cart[name]) {
+            cart[name].quantity += 1;
+        } else {
+            cart[name] = { price, quantity: 1 };
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        displayCart();
+    }
+
+    function displayCart() {
+        const cartList = document.getElementById("cart");
+        const totalElement = document.getElementById("total");
+        
+        if (!cartList || !totalElement) return;
+
+        cartList.innerHTML = ""; // Clear previous list
+        let total = 0;
+        let hasItems = false; // Track if cart has items
+
+        for (let item in cart) {
+            if (cart[item].quantity > 0) {
+                hasItems = true;
+                const li = document.createElement("li");
+                li.textContent = `${item} - $${cart[item].price} x ${cart[item].quantity}`;
+                cartList.appendChild(li);
+                total += cart[item].price * cart[item].quantity;
+            }
+        }
+
+        totalElement.textContent = hasItems ? `Total: $${total.toFixed(2)}` : "Cart is empty";
+    }
+
+    function checkout() {
+        if (Object.keys(cart).length === 0) {
+            alert("Your cart is empty!");
+        } else {
+            window.location.href = "checkout.html";
+        }
+    }
+
+    // Ensure cart updates on page load
+    document.addEventListener("DOMContentLoaded", displayCart);
+
+    // Show Cart Modal
+    document.getElementById("showCartButton").addEventListener("click", () => {
+        const modal = document.getElementById("cartModal");
+        modal.style.display = "block";
+    });
+
+    // Close Cart Modal
+    document.querySelector(".close").addEventListener("click", () => {
+        const modal = document.getElementById("cartModal");
+        modal.style.display = "none";
+    });
+
+    window.onclick = function(event) {
+        const modal = document.getElementById("cartModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>
+</body>
+</html>

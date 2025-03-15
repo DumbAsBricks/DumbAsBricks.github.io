@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>WakuWaku-Home</title>
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/NavStyle.css">
+    </head>
+    <body>
+
+
+<header>
+            <img class="logo" src="images/WaKuWaKu_banner.png" alt="logo" height="auto" width="200px">
+            <nav class="nav">
+                <ul>
+                    <li><a href="sophie.html">Products</a></li>
+                    <li><a href="newcart.html">Purchase Hardware</a></li>
+                    <li><a href="form.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            
+        </header>
+<br>
+            <style>
+        /* Gallery styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .gallery-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .gallery-item img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+        <div class="gallery" id="items">
+            <div class="gallery-item">
+                <img src="images/stanley-hammer.jpg" width="50">
+                <p>STANLEY HAMMER WITH HANDLE - ₱250.00</p>
+                <button onclick="addToCart('STANLEY HAMMER WITH HANDLE', 250, 'images/stanley-hammer.jpg')"class="peach-button">Add to Cart</button>
+            </div>
+            <div class="gallery-item">
+                <img src="images/blackdeckerdrill.jpg" width="50">
+                <p>BLACK & DECKER B+D TP555K 10MM IMPACT DRILL 550W B - ₱3500.00</p>
+                <button onclick="addToCart('BLACK & DECKER DRILL', 3500, 'images/blackdeckerdrill.jpg')"class="peach-button">Add to Cart</button>
+            </div>
+            <div class="gallery-item">
+                <img src="images/leveler.jpg" width="50">
+                <p>DeWalt - TORPEDO LEVEL - ₱499.00</p>
+                <button onclick="addToCart('DeWalt TORPEDO LEVEL', 499, 'images/leveler.jpg')"class="peach-button">Add to Cart</button>
+            </div>
+            <div class="gallery-item">
+                <img src="images/wrenchset.jpg" width="50">
+                <p>Ingco Combination Wrench Set HKSPA1142 (6-24mm) 12pcs - ₱2499.00</p>
+                <button onclick="addToCart('Ingco Wrench Set', 2499, 'images/wrenchset.jpg')"class="peach-button">Add to Cart</button>
+            </div>
+            <div class="gallery-item">
+                <img src="images/screwdriverset.jpg" width="50">
+                <p>DEWALT Cordless Screwdriver with FLEXDRIVE Control - ₱2799.00</p>
+                <button onclick="addToCart('DEWALT Screwdriver', 2799, 'images/screwdriverset.jpg')"class="peach-button">Add to Cart</button>
+            </div>
+            <div class="gallery-item">
+                <img src="images/allenwrench.jpg" width="50">
+                <p>Ingco 9 Pcs / Set Hex Allen Wrench Key HHK11091 - ₱1299.00</p>
+                <button onclick="addToCart('Ingco Allen Wrench Set', 1299, 'images/allenwrench.jpg')"class="peach-button">Add to Cart</button>
+            </div>
+            <div class="gallery-item">
+                <img src="images/Galvanized Steel.jpg" width="50">
+                <p>Galvanized Square Steel - ₱50.00</p>
+                <button onclick="addToCart('Galvanized Square Steel', 50, 'images/Galvanized Steel.jpg')"class="peach-button">Add to Cart</button>
+            </div>
+            <div class="gallery-item">
+                <img src="images/Wood Veneer.jpg" width="50">
+                <p>Acituna Wood Veneer Sheet - ₱250.00</p>
+                <button onclick="addToCart('Wood Veneer Sheet', 250, 'images/Wood Veneer.jpg')"class="peach-button">Add to Cart</button>
+            </div>
+            <div class="gallery-item">
+                <img src="images/eva.jpg" width="50">
+                <p>EVA Foam Sheet - ₱1344.00</p>
+                <button onclick="addToCart('EVA Foam Sheet', 1344, 'images/eva.jpg')"class="peach-button">Add to Cart</button>
+            </div>
+            <div class="gallery-item">
+                <img src="images/permacoat.jpg" width="50">
+                <p>Boysen Paint 4 Liters - ₱689.00</p>
+                <button onclick="addToCart('Boysen Paint 4L', 689, 'images/permacoat.jpg')"class="peach-button">Add to Cart</button>
+            </div>
+            <div class="gallery-item">
+                <img src="images/dewaltcirclesaw.jpg" width="50">
+                <p>Dewalt Circular Saw - ₱11340.00</p>
+                <button onclick="addToCart('Dewalt Circular Saw', 11340, 'images/dewaltcirclesaw.jpg')"class="peach-button">Add to Cart</button>
+            </div>
+            <div class="gallery-item">
+                <img src="images/dewaltbattery.jpg" width="50">
+                <p>Dewalt Battery - ₱8190.00</p>
+                <button onclick="addToCart('Dewalt Battery', 8190, 'images/dewaltbattery.jpg')"class="peach-button">Add to Cart</button>
+            </div>
+            <div class="gallery-item">
+                <img src="images/dewaltbrushless.jpg" width="50">
+                <p>Dewalt Brushless Drill - ₱8590.00</p>
+                <button onclick="addToCart('Dewalt Brushless Drill', 8590, 'images/dewaltbrushless.jpg')"class="peach-button">Add to Cart</button>
+            </div>
+            <div class="gallery-item">
+                <img src="images/lathe.jpg" width="50">
+                <p>CQ6132 Mini Lathe - ₱11,741.00</p>
+                <button onclick="addToCart('Mini Lathe Machine', 11741, 'images/lathe.jpg')"class="peach-button">Add to Cart</button>
+            </div>
+        </div>
+        
+        <button id="showCartButton"class="peach-button">Show Cart</button>
+    
+        <!-- The Cart Modal -->
+        <div id="cartModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Cart</h2>
+                <ul id="cart"></ul>
+                <p id="total">Total: ₱0.00</p>
+                <button onclick="checkout()"class="peach-button">Proceed to Checkout</button>
+            </div>
+        </div>
+    
+        <!-- New Empty Cart Modal -->
+        <div id="emptyCartModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+            
+            </div>
+        </div>
+    
+        <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || {};
+    
+        function addToCart(name, price, image) {
+            if (cart[name]) {
+                cart[name].quantity += 1;
+            } else {
+                cart[name] = { price, quantity: 1, image };
+            }
+            localStorage.setItem("cart", JSON.stringify(cart));
+            displayCart();
+        }
+    
+        function removeFromCart(name) {
+            if (cart[name]) {
+                cart[name].quantity -= 1;
+                if (cart[name].quantity <= 0) {
+                    delete cart[name];
+                }
+                localStorage.setItem("cart", JSON.stringify(cart));
+                displayCart();
+            }
+        }
+    
+        function displayCart() {
+            const cartList = document.getElementById("cart");
+            const totalElement = document.getElementById("total");
+            
+            if (!cartList || !totalElement) return;
+    
+            cartList.innerHTML = ""; // Clear previous list
+            let total = 0;
+            let hasItems = false; // Track if cart has items
+    
+            for (let item in cart) {
+                if (cart[item].quantity > 0) {
+                    hasItems = true;
+                    const li = document.createElement("li");
+                    li.innerHTML = `<img src="${cart[item].image}" width="50"> ${item} - ₱${cart[item].price} x ${cart[item].quantity} <button onclick="removeFromCart('${item}')">Remove</button>`;
+                    cartList.appendChild(li);
+                    total += cart[item].price * cart[item].quantity;
+                }
+            }
+    
+        }
+    
+        function checkout() {
+            if (Object.keys(cart).length === 0) {
+                const modal = document.getElementById("emptyCartModal");
+                modal.style.display = "block";
+            } else {
+                window.location.href = "checkout.html";
+            }
+        }
+    
+        // Ensure cart updates on page load
+        document.addEventListener("DOMContentLoaded", displayCart);
+    
+        // Show Cart Modal
+        document.getElementById("showCartButton").addEventListener("click", () => {
+            const modal = document.getElementById("cartModal");
+            modal.style.display = "block";
+        });
+    
+        // Close Cart Modal
+        document.querySelectorAll(".close").forEach(closeButton => {
+            closeButton.addEventListener("click", () => {
+                closeButton.parentElement.parentElement.style.display = "none";
+            });
+        });
+    
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll(".modal");
+            modals.forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            });
+        }
+        </script>
+
+
+
+    </body>
+</html>
+

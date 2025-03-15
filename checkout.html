@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/getstyledon.css">
+    <link rel="stylesheet" href="css/Homepage_Styles.css">
+    <link rel="stylesheet" href="css/NavStyle.css">
+    <title>Checkout</title>
+    <script defer src="checkout.js"></script>
+</head>
+<body>
+    <div class="move-it">
+        <center><h1>WAKU WAKU WAN WAN Hardware</h1></center>
+    </div>
+    
+
+    <h2>Checkout</h2>
+    <ul id="cart"></ul>
+    
+    <h2>Customer Information</h2>
+    <form id="customerForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required><br><br>
+        <label for="contact">Contact Information:</label>
+        <input type="text" id="contact" name="contact" required><br><br>
+    </form>
+    
+    <h2>Select Payment Method</h2>
+    <select id="payment">
+        <option value="credit">Credit Card</option>
+        <option value="paypal">PayPal</option>
+        <option value="cash on delivery">Cash On Delivery</option>
+    </select>
+    
+    <h2>Coupon</h2>
+    <input type="text" id="coupon" placeholder="Enter coupon code">
+    <button id="addCouponButton" class="peach-button">Add Coupon</button><br><br>
+    
+    <p id="total">Total: ₱0.00</p>
+    <p id="discount">Discount: ₱0.00</p>
+    <p id="finalTotal">Final Total: ₱0.00</p>
+    <button id="buyButton" class="peach-button">Buy Now</button> 
+
+    <!-- The Confirmation Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Are you sure you want to complete the purchase?</p>
+            <button id="confirmButton" class="peach-button">Yes</button>
+            <button id="cancelButton" class="peach-button">No</button>
+        </div>
+    </div>
+
+    <!-- The Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="successMessage">Purchase successful!</p>
+            <button id="okButton" class="peach-button">OK</button>
+        </div>
+    </div>
+
+    <!-- The Empty Cart Modal -->
+    <div id="emptyCartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Your cart is empty! Redirecting to cart page.</p>
+            <button id="emptyCartOkButton" class="peach-button">OK</button>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        let cart = JSON.parse(localStorage.getItem("cart")) || {};
+        let appliedCoupons = [];
+        if (Object.keys(cart).length === 0) {
+            const emptyCartModal = document.getElementById("emptyCartModal");
+            emptyCartModal.style.display = "block";
+            document.getElementById("emptyCartOkButton").addEventListener("click", () => {
+                emptyCartModal.style.display = "none";
+                window.location.href = "cart.html";
+            });
+            return;
+        }
+
+        const cartList = document.getElementById("cart");
+        const totalElement = document.getElementById("total");
+        const discountElement = document.getElementById("discount");
+        const finalTotalElement = document.getElementById("finalTotal");
+        let total = 0;
+        let discount = 0;
+
+        for (let item in cart) {
+            const li = document.createElement("li");
+            li.innerHTML = `<img src="${cart[item].image}" width="50"> ${item} - ₱${cart[item].price} x ${cart[item].quantity} = ₱${(cart[item].price * cart[item].quantity).toFixed(2)}`;
+            cartList.appendChild(li);
+            total += cart[item].price * cart[item].quantity;
+        }
+
+        totalElement.textContent = `Total: ₱${total.toFixed(2)}`;
+        finalTotalElement.textContent = `Final Total: ₱${total.toFixed(2)}`;
+
+        function applyCoupons() {
+            let hasGalvanizedSteel = false;
+            let hasWoodVeneer = false;
+
+            for (let item in cart) {
+                if (item === "Galvanized Square Steel") {
+                    hasGalvanizedSteel = true;
+                }
+                if (item === "Acituna Wood Veneer Sheet") {
+                    hasWoodVeneer = true;
+                }
+            }
+
+            discount = 0;
+            appliedCoupons.forEach(coupon => {
+                if (coupon === "LJdiscount" && hasGalvanizedSteel && hasWoodVeneer) {
+                    discount += total * 0.1; // Calculate 10% discount
+                }
+                if (coupon === "20is20" && total >= 20) {
+                    discount += 20; // Set discount amount to ₱20
+                }
+            });
+
+            discountElement.textContent = `Discount: ₱${discount.toFixed(2)}`;
+            finalTotalElement.textContent = `Final Total: ₱${(total - discount).toFixed(2)}`;
+        }
+
+        document.getElementById("addCouponButton").addEventListener("click", () => {
+            const coupon = document.getElementById("coupon").value.trim();
+            if (coupon && !appliedCoupons.includes(coupon)) {
+                appliedCoupons.push(coupon);
+                applyCoupons();
+                document.getElementById("coupon").value = ""; // Clear the input box
+            }
+        });
+
+        document.getElementById("buyButton").addEventListener("click", () => {
+            const form = document.getElementById("customerForm");
+            if (form.checkValidity()) {
+                const modal = document.getElementById("myModal");
+                modal.style.display = "block";
+            } else {
+                form.reportValidity();
+            }
+        });
+
+        document.getElementById("confirmButton").addEventListener("click", () => {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+            const successModal = document.getElementById("successModal");
+            successModal.style.display = "block";
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || {};
+            let total = 0;
+            let hasGalvanizedSteel = false;
+            let hasWoodVeneer = false;
+            let discount = 0;
+
+            for (let item in cart) {
+                total += cart[item].price * cart[item].quantity;
+                if (item === "Galvanized Square Steel") {
+                    hasGalvanizedSteel = true;
+                }
+                if (item === "Acituna Wood Veneer Sheet") {
+                    hasWoodVeneer = true;
+                }
+            }
+
+            appliedCoupons.forEach(coupon => {
+                if (coupon === "LJdiscount" && hasGalvanizedSteel && hasWoodVeneer) {
+                    discount += total * 0.1; // Calculate 10% discount
+                }
+                if (coupon === "20is20" && total >= 20) {
+                    discount += 20; // Set discount amount to ₱20
+                }
+            });
+
+            total -= discount; // Apply the discount to the total
+
+            localStorage.removeItem("cart");
+            document.getElementById("successMessage").textContent = `Purchase successful! Total: ₱${total.toFixed(2)}${discount > 0 ? `, Discount: ₱${discount.toFixed(2)}` : ''}`;
+        });
+
+        document.getElementById("cancelButton").addEventListener("click", () => {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        });
+
+        document.getElementById("okButton").addEventListener("click", () => {
+            const successModal = document.getElementById("successModal");
+            successModal.style.display = "none";
+            window.location.href = "newcart.html";
+        });
+
+        document.querySelectorAll(".close").forEach(closeButton => {
+            closeButton.addEventListener("click", () => {
+                const modal = closeButton.closest(".modal");
+                modal.style.display = "none";
+            });
+        });
+
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll(".modal");
+            modals.forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html>

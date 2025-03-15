@@ -1,0 +1,504 @@
+nav {
+  margin-bottom: 15px;
+}
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  border-bottom: 2px solid #605f4b;
+  padding: 8px;
+  width: 510px;
+  justify-content: center;
+}
+nav ul li {
+  margin: 15px;
+}
+/*nav colors*/
+a:link {
+color: var(--BLACK);
+text-decoration: none;
+}
+a:hover {
+color: var(--RED);
+background-color: transparent;
+}
+  .navbar img{
+    width: 20px; /* Adjust size */
+    height: auto;
+    margin-right: 8px;
+  }
+  
+
+
+  .flex-tape {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Always 4 columns */
+    gap: 3px;
+    justify-content: center;
+}
+
+h1 {
+  text-shadow: 0 0 3px #ffffff;
+  font-size: clamp(2rem, 5vw, 3rem); 
+  white-space: nowrap;
+    overflow: hidden;
+    margin-left: 60px;
+    margin-top: -100px;
+}
+
+.item {
+    width: 100%; /* Ensures it fills its grid cell */
+    margin: 10px;
+}
+  
+.kanade-div {  
+border: 2px solid gray;
+text-align: left;
+max-width: 180px;
+min-width:180px;
+height: 310px;
+overflow: hidden; /* Prevent text from spilling out */
+word-wrap: break-word;           
+}
+
+.nenekusanagi-div {  
+  border: 2px solid #605f4b;
+  text-align: left;
+  max-width: 180px;
+  min-width:180px;
+  height: 310px;
+  overflow: hidden; /* Prevent text from spilling out */
+  word-wrap: break-word;           
+  }
+  
+
+  .the-wheel-to-the-right{ /*Adds padding to the right, the class name is a reference to a song in maimai*/
+    margin-left: 25px;     
+  
+  }
+  
+  .the-wheel-to-the-left{ /*Adds padding to the left*/
+   margin-right: 25px;
+  
+  }
+
+  .the-wheel-went-too-far-to-the-left{ /*Adds padding to the left*/
+    margin-left: 50px;
+   
+   }
+
+   .the-wheel-went-too-far-to-the-right{ /*Adds padding to the left*/
+    margin-right: 500px;
+   
+   }
+  
+  .icon img {
+    width:300px;
+    max-height: 300px;
+    border: px solid rgb(39, 39, 39);
+
+    
+  
+  }
+
+  .banner img{
+    width: 100%;  /* Adjusts width to screen */
+    height: auto; /* Maintains aspect ratio */
+    display: block;
+  }
+  
+  .eris-pads-her-chest { /* Applies padding to the text inside the boxes, yes this is a Konosuba reference */
+    padding: 1px;
+    
+  }
+
+  .more-pads {
+    padding: 4px;
+
+  }
+  
+  .fuckit-arial{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.77rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* this limits text to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+  }
+
+  .margin-to-the-left{
+    margin-left: 3px;
+
+  }
+
+  .form-divisoria{
+
+    border: 4px solid rgb(39, 39, 39);
+    max-width: 280px;
+    min-width:280px;
+    height: 560px;
+    overflow: hidden; /* Prevent text from spilling out */
+    word-wrap: break-word;
+    text-align: left; 
+    margin: 0;
+    padding: 4px;
+    
+
+  }
+
+  input[type=text] {
+    width: 95%;
+    padding: 7px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  
+  input[type=number] {
+    width: 40%;
+    padding: 9px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+  .kuru-kuru {
+    max-width: 400px;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px; /* Adjust for more or less rounding */
+    padding: 20px;
+    text-align: left;
+    box-shadow: 10px 10px 5px rgb(59, 66, 68);
+    
+  }
+
+  .change-to-arial{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.77rem;
+    
+  }
+
+  /*what follows is for the thumbnail*/
+  .gallery img{
+    min-width: 260px;
+    min-height: 260px;
+  }
+
+.thumbnail {
+    width: 150px; /* Adjust size */
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.thumbnail:hover {
+    opacity: 0.7;
+}
+
+/* Pop-up container (hidden by default) */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Display pop-up when targeted */
+:target {
+    display: flex;
+}
+
+/* Pop-up image */
+.popup-content {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 40px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+
+/*
+ya guys can copy this for the nav bar/header design, -sophy 
+*/
+
+/*color pallete*/
+:root {
+  --BEIGE: #cdad85;
+  --WHITE: #F9F4EA;
+  --RED: #C47457;
+  --SAGE: #9C9E80;
+  --BLACK: #3f3f36;
+}
+  
+
+/*Search*/
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--RED);
+  border-radius: 5px;
+  overflow: hidden;
+  width: 300px;
+}
+.search-bar input {
+  padding: 10px;
+  border: none;
+  outline: none;
+  flex: 1;
+}
+.search-bar button {
+  background: var(--RED);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+}
+
+/* Full-width Image (banners for our product) */
+.top-image {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+}
+/*text boxes?*/
+/*container:*/
+.Text-box {
+  padding: 50px;
+  text-align: center;
+  background: var(--WHITE);
+  color: var(--BLACK);
+}
+/*the bigger text inside the container */
+.Text-big h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+/*the smaller text inside the container*/
+.Text-small p {
+  font-size: 1.2em;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Slideshow */
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:70vh;
+}
+.slides {
+  display: none;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+.fade {
+  animation: fadeEffect 1.5s;
+}
+@keyframes fadeEffect {
+  from {opacity: 0.4;}
+  to {opacity: 1;}
+}
+footer {
+  justify-content: center;
+  padding: 20px;
+  background: var(--SAGE);
+  color: var(--WHITE);
+  margin-top: 30px;
+}
+
+.move-it{
+
+  margin-top: -100px;
+}
+ 
+.mizuki-div {
+  
+  border: 2px solid gray;
+  text-align: left;
+  max-width: 280px;
+  min-width:180px;
+  height: 380px;
+  overflow: hidden; /* Prevent text from spilling out */
+  word-wrap: break-word;
+  
+  
+     
+  }
+
+.image-setter img{
+  max-width: 280px;
+  min-width: 280px;
+  height: 280px;
+
+}
+
+.img-setit img {
+  max-width: 260px;
+  min-width: 260px;
+  height: 260px;
+
+}
+
+.image-setter p{
+text-align: center;
+
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.image-setter {
+  display: flex;
+    flex-wrap: wrap; /* Allows wrapping to a new row if needed */
+    gap: 15px; /* Adds space between items */
+    justify-content: center;
+}
+
+.modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    /*all this is for the modal*/
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay */
+      padding-top: 60px;
+  }
+  
+  .modal-content {
+      background-color: #FFE5B4; /* Light Peach */
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #E3A869; /* Slightly darker peach border */
+      width: 80%;
+      border-radius: 12px; /* Rounded corners for a softer look */
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  }
+  
+  .close {
+      color: #A35D3A; /* Darker brown for contrast */
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+  }
+  
+      
+      .peach-button {
+        background-color: #FFCBA4; 
+        border: none;
+        border-radius: 25px; 
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #5A3E36; 
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .peach-button:hover {
+        background-color: #FFB07C; 
+        transform: scale(1.05);
+    }
+    
+    .peach-button:active {
+        background-color: #E89E6D;
+        transform: scale(0.98);
+    }
+
+    ul {
+    
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #1f1e33;
+    }
+    
+    li {
+      float: left;
+    }
+    
+    li a {
+      display: block;
+      color: rgb(255, 255, 255);
+      text-align: center;
+      font-size:120%;
+      font-family: arial;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    
+    li a:hover {
+      background-color: #9266e6;
+    }
+  
+    h3 {
+  
+      font-family: arial;
+  
+    }
